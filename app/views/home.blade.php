@@ -5,20 +5,18 @@
         <title>URL Shortener</title>
         <link rel="stylesheet" href="{{ URL::to('css/main.css') }}">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="{{ URL::to('js/handlebars.js') }}"></script>
         <script src="{{ URL::to('js/main.js') }}"></script>
     </head>
     <body>
-        <div class="container">
+    <h1 class="stop">Stop making it smaller, Vaginaface</h1>
+    <div class="container">
             <h1 class="title">Shorten your URL</h1>
-<<<<<<< HEAD
             <!--blade syntax. checks if errors exists then display error  -->
-            @if($errors->has('url'))
-                <p> {{ $errors->first('url')}}</p>
-            @endif
-=======
-            <!--blade syntax. checks -->
 
->>>>>>> master
+            <script id="test" type="text/x-handlebars-template">
+                <p><a></a></p>
+            </script>
 
             <!--checks if sessions exists and then gets session so that we can get access to global-->
                 <p><a id="resultURL" href=""></a></p>

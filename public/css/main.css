@@ -75,3 +75,17 @@
     display: inline-block;
     font-size: 12px;
 }
+
+.stop{
+    display: none;
+}
+
+@media (max-width: 473px) {
+    .container{
+        display: none;
+    }
+    .stop{
+        display: block;
+    }
+
+}
