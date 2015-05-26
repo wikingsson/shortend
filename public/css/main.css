@@ -76,9 +76,12 @@
     font-size: 12px;
 }
 
-<<<<<<< HEAD
 .stop{
     display: none;
+}
+#result {
+
+    padding:10px;
 }
 
 @media (max-width: 473px) {
@@ -88,10 +91,4 @@
     .stop{
         display: block;
     }
-=======
-#result {
-
-    padding:10px;
->>>>>>> master
-
 }
