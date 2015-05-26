@@ -3,10 +3,15 @@
     <head>
         <meta charset="utf-8">
         <title>URL Shortener</title>
-        <link rel="stylesheet" href="{{ URL::to('css/main.css') }}">
+        <link rel="stylesheet" href="css/main.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<<<<<<< HEAD:app/views/home.blade.php
         <script src="{{ URL::to('js/handlebars.js') }}"></script>
         <script src="{{ URL::to('js/main.js') }}"></script>
+=======
+        <script src="js/handlebars.js"></script>
+        <script src="js/main.js"></script>
+>>>>>>> master:app/views/home.php
     </head>
     <body>
     <h1 class="stop">Stop making it smaller, Vaginaface</h1>
@@ -18,10 +23,13 @@
                 <p><a></a></p>
             </script>
 
-            <!--checks if sessions exists and then gets session so that we can get access to global-->
-                <p><a id="resultURL" href=""></a></p>
-                <input type="url" name="url" class="url" placeholder="Enter your URL here..." autocomplete="off" {{ Input::old('url') ? ' value="' . e(Input::old('url')) . '"' : '' }}/>
+            <!--  <p><a id="resultURL" href="">{{url}}</a></p>-->
+                <script id="test" type="text/x-handlebars-template">{{url}}</script>
+            <a id="result" href="#" name=""></a>
+            <div>
+                <input type="url" name="url" class="url" placeholder="Enter your URL here..." autocomplete="off"/>
                 <input type="button" name="shorten_button" value="SHORTEN" class="shorten">
+        </div>
             <div class="table">
                 <div class="tableHeader">
                     <p class="tableHeaderText left">LONG URL</p>

@@ -17,12 +17,41 @@ jQuery(document).ready(function($){
             .success(
             function(data){
 
-                console.log(data);
+                var source = $('#test').html();
+                var template = Handlebars.compile(source);
+                var context = {
+                    url: jQuery.parseJSON(data)
+                };
 
-                //$('#resultURL').attr('href', data);
+                var html = template(context);
 
-                //console.log($('#resultURL').href());
+                $('#result').attr('name', html);
+                $('#result').html('http://shorty.se/' + html);
+
+            });
+    });
+
+    $('#result').on('click', function(){
+
+
+        var code = $('#result').attr('name');
+
+        $.get("../public/get" ,
+            {
+                code: code
             }
-        );
+        )
+            .error(
+            function(){
+                console.log("Error: Something is fucking wrong");
+            })
+            .success(
+            function(result){
+
+                //alert(result);
+
+                $('#result').attr('href', result);
+
+            });
     });
 });

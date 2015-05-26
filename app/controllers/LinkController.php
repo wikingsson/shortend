@@ -54,14 +54,15 @@ class LinkController extends BaseController{
         return Redirect::action('home')->with('global', 'Something Went wrong, try again');
     }
 
-    public function get($code){
+    public function get(){
+        $code = $_GET["code"];
         $link = Link::where('code', '=',  $code);
 
         //redirect to the actual site of the URL
         if($link->count() === 1){
-            return Redirect::to($link->first()->url);
+            return $link->first()->url;
         }
 
-        return Redirect::action('home');
+        return "Something went wrong";
     }
 }
