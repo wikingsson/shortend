@@ -7,11 +7,15 @@ class LinkController extends BaseController{
         //makes sure URL exist, makes sure its an URL, makes sure its not longer than 255 char
         $validator = Validator::make(Input::all(), array(
             'url' => 'required|url|max:255'
+
         ));
 
         //if validation fails redirect to index with error message
         if($validator->fails()){
-            return Redirect::action('home')->withInput()->withErrors($validator);
+
+            $error = 'Not valid URL';
+
+            return json_encode($error);
         } else {
             //gets URL, sets code to null
             $url = Input::get('url');
@@ -20,7 +24,7 @@ class LinkController extends BaseController{
             //checks if URL exists with eloquent method (where), then echos the first code if exists otherwise we generate a new code
             $exists = Link::where('url', '=', $url);
             if($exists->count() === 1){
-                echo $code = $exists->first()->code;
+                $code = $exists->first()->code;
             } else{
                 //create is another eloquent method
                 $created = Link::create(array(
@@ -38,7 +42,12 @@ class LinkController extends BaseController{
 
             if($code){
                 //redirect to home with shortened URL
-                return Redirect::action('home')->with('global', 'Here is your shortened URL: <a href="' . URL::action('get', $code) . '">' . URL::action('get', $code) . '</a>');
+                //return Redirect::action('home')->with('global', 'Here is your shortened URL: <a href="' . URL::action('get', $code) . '">' . URL::action('get', $code) . '</a>');
+                //die(var_dump($code));
+
+                $result = (json_encode($code));
+
+                return $result;
             }
         }
 

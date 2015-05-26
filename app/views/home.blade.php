@@ -4,23 +4,19 @@
         <meta charset="utf-8">
         <title>URL Shortener</title>
         <link rel="stylesheet" href="{{ URL::to('css/main.css') }}">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="{{ URL::to('js/main.js') }}"></script>
     </head>
     <body>
         <div class="container">
             <h1 class="title">Shorten your URL</h1>
             <!--blade syntax. checks -->
-            @if($errors->has('url'))
-                <p> {{ $errors->first('url')}}</p>
-            @endif
+
 
             <!--checks if sessions exists and then gets session so that we can get access to global-->
-            @if(Session::has('global'))
-                <p>{{ Session::get('global') }}</p>
-            @endif
-            <form method="post" action="{{ URL::action('make') }}">
+                <p><a id="resultURL" href=""></a></p>
                 <input type="url" name="url" class="url" placeholder="Enter your URL here..." autocomplete="off" {{ Input::old('url') ? ' value="' . e(Input::old('url')) . '"' : '' }}/>
-                <input type="submit" name="shorten_button" value="SHORTEN" class="shorten">
-            </form>
+                <input type="button" name="shorten_button" value="SHORTEN" class="shorten">
             <div class="table">
                 <div class="tableHeader">
                     <p class="tableHeaderText left">LONG URL</p>
