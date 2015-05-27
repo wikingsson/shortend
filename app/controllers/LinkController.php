@@ -41,10 +41,7 @@ class LinkController extends BaseController{
             }
 
             if($code){
-                //redirect to home with shortened URL
-                //return Redirect::action('home')->with('global', 'Here is your shortened URL: <a href="' . URL::action('get', $code) . '">' . URL::action('get', $code) . '</a>');
-                //die(var_dump($code));
-
+                //returns json_encoded code
                 $result = (json_encode($code));
 
                 return $result;
@@ -54,14 +51,15 @@ class LinkController extends BaseController{
         return Redirect::action('home')->with('global', 'Something Went wrong, try again');
     }
 
-    public function get($code){
+    public function get(){
+        $code = $_GET["code"];
         $link = Link::where('code', '=',  $code);
 
-        //redirect to the actual site of the URL
+        //returns the full extended URL
         if($link->count() === 1){
-            return Redirect::to($link->first()->url);
+            return $link->first()->url;
         }
 
-        return Redirect::action('home');
+        return "Something went wrong";
     }
 }
