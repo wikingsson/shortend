@@ -49,14 +49,18 @@
 }
 
 .left{
+    text-align: left;
     float: left;
-    max-width: 240px;
+    width: 240px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .middle{
+    width: 150px;
+    text-align: left;
+
 }
 
 .right{
@@ -70,4 +74,21 @@
 .tableContentText{
     display: inline-block;
     font-size: 12px;
+}
+
+.stop{
+    display: none;
+}
+#result {
+
+    padding:10px;
+}
+
+@media (max-width: 473px) {
+    .container{
+        display: none;
+    }
+    .stop{
+        display: block;
+    }
 }
